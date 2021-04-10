@@ -7,6 +7,7 @@ import { validationSchema } from '../../utils/validationSchema';
 import Input from '../Input';
 import logo from '../../imgs/logo1.png';
 import { logIn } from '../../firebase';
+import { InputPassword } from '../InputPassword/InputPassword';
 
 export const LoginForm = () => {
   const [formState, handleInputChange, isValid] = useForm(
@@ -39,10 +40,9 @@ export const LoginForm = () => {
           onChange={handleInputChange}
           value={email}
         />
-        <Input
+        <InputPassword
           id='password'
           labelTitle='Password:'
-          type='password'
           name='password'
           onChange={handleInputChange}
           value={password}

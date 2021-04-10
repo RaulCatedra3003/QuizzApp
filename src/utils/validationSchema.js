@@ -6,7 +6,7 @@ export const validationSchema = {
       minDomainSegments: 2,
       tlds: { allow: ['com', 'net', 'es'] },
     }),
-    password: Joi.string().pattern(new RegExp('^[a-zA-Z0-9]{3,30}$')),
+    password: Joi.string().pattern(new RegExp('^[a-zA-Z0-9]{6,30}$')),
   },
   singIn: {
     firstName: Joi.string().required().alphanum().min(3).max(15),
@@ -15,7 +15,7 @@ export const validationSchema = {
       minDomainSegments: 2,
       tlds: { allow: ['com', 'net', 'es'] },
     }),
-    password: Joi.string().pattern(new RegExp('^[a-zA-Z0-9]{3,30}$')),
+    password: Joi.string().pattern(new RegExp('^[a-zA-Z0-9]{6,30}$')),
     confirmPassword: Joi.ref('password'),
   },
 };

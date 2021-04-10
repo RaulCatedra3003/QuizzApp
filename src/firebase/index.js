@@ -17,12 +17,12 @@ if (!firebase.apps.length) {
   firebase.app();
 }
 
-export const singIn = (email, password) => {
-  return firebase.auth().createUserWithEmailAndPassword(email, password);
-};
-
 export const logIn = (email, password) => {
   return firebase.auth().signInWithEmailAndPassword(email, password);
+};
+
+export const singIn = (email, password) => {
+  return firebase.auth().createUserWithEmailAndPassword(email, password);
 };
 
 export function getCurrentUserToken() {

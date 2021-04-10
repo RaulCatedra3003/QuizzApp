@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
+import './QuizzApp.scss';
+
 import { firebase } from './firebase';
 import AuthContext from './context/AuthContext';
 import { AppRouter } from './Router/AppRouter';

@@ -6,6 +6,7 @@ import { useForm } from '../../hooks/useForm';
 import { validationSchema } from '../../utils/validationSchema';
 import Input from '../Input';
 import logo from '../../imgs/logo1.png';
+import { logIn } from '../../firebase';
 
 export const LoginForm = () => {
   const [formState, handleInputChange, isValid] = useForm(
@@ -22,7 +23,7 @@ export const LoginForm = () => {
       setErrorMessage(error.message);
     } else {
       setErrorMessage(undefined);
-      //TODO: crear login con firebase
+      await logIn(email, password);
     }
   };
 

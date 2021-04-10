@@ -6,6 +6,7 @@ import { useForm } from '../../hooks/useForm';
 import { validationSchema } from '../../utils/validationSchema';
 import Input from '../Input';
 import logo from '../../imgs/logo1.png';
+import { singIn } from '../../firebase';
 
 export const SinginForm = () => {
   const [formState, handleInputChange, isValid] = useForm(
@@ -28,7 +29,9 @@ export const SinginForm = () => {
       setErrorMessage(error.message);
     } else {
       setErrorMessage(null);
-      //TODO: crear nuevo usuario con firebase
+      const { user } = await singIn(email, password);
+      console.log(user.uid);
+      //TODO: regist new user in our database;
     }
   };
 

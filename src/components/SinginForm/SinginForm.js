@@ -7,6 +7,7 @@ import { validationSchema } from '../../utils/validationSchema';
 import Input from '../Input';
 import logo from '../../imgs/logo1.png';
 import { singIn } from '../../firebase';
+import { InputPassword } from '../InputPassword/InputPassword';
 
 export const SinginForm = () => {
   const [formState, handleInputChange, isValid] = useForm(
@@ -63,18 +64,16 @@ export const SinginForm = () => {
           onChange={handleInputChange}
           value={email}
         />
-        <Input
+        <InputPassword
           id='password'
           labelTitle='Password:'
-          type='password'
           name='password'
           onChange={handleInputChange}
           value={password}
         />
-        <Input
+        <InputPassword
           id='confirmPassword'
           labelTitle='Confirm password:'
-          type='password'
           name='confirmPassword'
           onChange={handleInputChange}
           value={confirmPassword}

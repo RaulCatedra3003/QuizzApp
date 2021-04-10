@@ -4,7 +4,7 @@ import './Input.scss';
 
 export const Input = ({ id, labelTitle, ...props }) => {
   return (
-    <div className='Input'>
+    <div className='input'>
       <label htmlFor={id}>{labelTitle}</label>
       <input id={id} {...props} />
     </div>

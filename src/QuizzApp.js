@@ -5,6 +5,7 @@ import './QuizzApp.scss';
 import { firebase } from './firebase';
 import AuthContext from './context/AuthContext';
 import { AppRouter } from './Router/AppRouter';
+import constants from './utils/constants';
 
 function QuizzApp() {
   const [currentUser, setCurrentUser] = useState(null);
@@ -12,10 +13,17 @@ function QuizzApp() {
   useEffect(() => {
     const unsubscribeFromAuth = firebase.auth().onAuthStateChanged(user => {
       if (user) {
-        setCurrentUser({
-          token: user.za,
-          uid: user.uid,
-        });
+        fetch(`${constants.backendUrl}users/${user.uid}`, {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: 'Bearer ' + user.za,
+          },
+        })
+          .then(response => response.json())
+          .then(logedUser => {
+            setCurrentUser(logedUser.data);
+          });
       } else {
         setCurrentUser(null);
       }

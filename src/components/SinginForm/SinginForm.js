@@ -8,6 +8,7 @@ import Input from '../Input';
 import logo from '../../imgs/logo1.png';
 import { singIn } from '../../firebase';
 import { InputPassword } from '../InputPassword/InputPassword';
+import constants from '../../utils/constants';
 
 export const SinginForm = () => {
   const [formState, handleInputChange, isValid] = useForm(
@@ -31,8 +32,20 @@ export const SinginForm = () => {
     } else {
       setErrorMessage(null);
       const { user } = await singIn(email, password);
-      console.log(user.uid);
-      //TODO: regist new user in our database;
+      const newUser = await fetch(`${constants.backendUrl}users/newUser`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: 'Bearer ' + user.za,
+        },
+        body: JSON.stringify({
+          id: user.uid,
+          firstName,
+          lastName,
+          email,
+        }),
+      });
+      console.log(newUser);
     }
   };
 

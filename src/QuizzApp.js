@@ -13,17 +13,19 @@ function QuizzApp() {
   useEffect(() => {
     const unsubscribeFromAuth = firebase.auth().onAuthStateChanged(user => {
       if (user) {
-        fetch(`${constants.backendUrl}users/${user.uid}`, {
-          method: 'GET',
-          headers: {
-            'Content-Type': 'application/json',
-            Authorization: 'Bearer ' + user.za,
-          },
-        })
-          .then(response => response.json())
-          .then(logedUser => {
-            setCurrentUser(logedUser.data);
-          });
+        setTimeout(() => {
+          fetch(`${constants.backendUrl}users/${user.uid}`, {
+            method: 'GET',
+            headers: {
+              'Content-Type': 'application/json',
+              Authorization: 'Bearer ' + user.za,
+            },
+          })
+            .then(response => response.json())
+            .then(logedUser => {
+              setCurrentUser({ user: logedUser.data, token: user.za });
+            });
+        }, 1000);
       } else {
         setCurrentUser(null);
       }
@@ -34,7 +36,7 @@ function QuizzApp() {
         unsubscribeFromAuth();
       }
     };
-  }, [currentUser]);
+  }, []);
 
   return (
     <AuthContext.Provider value={{ currentUser }}>

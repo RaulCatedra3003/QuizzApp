@@ -6,6 +6,7 @@ import { useForm } from '../../hooks/useForm';
 import { validationSchema } from '../../utils/validationSchema';
 import Input from '../Input';
 import logo from '../../imgs/logo1.png';
+
 import { singIn } from '../../firebase';
 import { InputPassword } from '../InputPassword/InputPassword';
 import constants from '../../utils/constants';
@@ -32,7 +33,7 @@ export const SinginForm = () => {
     } else {
       setErrorMessage(null);
       const { user } = await singIn(email, password);
-      const newUser = await fetch(`${constants.backendUrl}users/newUser`, {
+      fetch(`${constants.backendUrl}users/newUser`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -45,7 +46,6 @@ export const SinginForm = () => {
           email,
         }),
       });
-      console.log(newUser);
     }
   };
 

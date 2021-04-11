@@ -4,14 +4,13 @@ import './SinginForm.scss';
 
 import { useForm } from '../../hooks/useForm';
 import { validationSchema } from '../../utils/validationSchema';
-import Input from '../Input';
-import logo from '../../imgs/logo1.png';
-
 import { singIn } from '../../firebase';
+import Input from '../Input';
 import { InputPassword } from '../InputPassword/InputPassword';
 import constants from '../../utils/constants';
 import AuthContext from '../../context/AuthContext';
 import Spinner from '../Spinner';
+import logo from '../../img/logo1.png';
 
 export const SinginForm = () => {
   const [formState, handleInputChange, isValid] = useForm(

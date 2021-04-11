@@ -1,0 +1,42 @@
+.header {
+  height: 75px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'Montserrat';
+
+  img {
+    height: 60px;
+    padding-left: 10px;
+  }
+
+  &__links {
+    &__link {
+      padding: 0 10px;
+      text-decoration: none;
+      color: #131313;
+    }
+
+    .selected {
+      color: #fe6830;
+      font-weight: bold;
+      font-size: 1.2em;
+    }
+  }
+
+  &__logout {
+    width: 300px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    button {
+      min-width: 44px;
+      height: 40px;
+      border-radius: 10px;
+      background-color: #131313aa;
+      color: #eee;
+      border: 1px solid #131313;
+    }
+  }
+}

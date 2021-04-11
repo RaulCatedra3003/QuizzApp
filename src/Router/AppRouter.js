@@ -6,6 +6,7 @@ import { PublicRoute } from '../components/PublicRoute/PublicRoute';
 
 import HomePage from '../pages/HomePage';
 import LoginPage from '../pages/LoginPage';
+import { Header } from '../components/Header/Header';
 
 export const AppRouter = () => {
   const [isAuth, setIsAuth] = useState(false);
@@ -27,6 +28,7 @@ export const AppRouter = () => {
             <LoginPage />
           </PublicRoute>
           <ProtectedRoute isAuthenticated={isAuth} path='/'>
+            <Header />
             <HomePage />
           </ProtectedRoute>
         </Switch>

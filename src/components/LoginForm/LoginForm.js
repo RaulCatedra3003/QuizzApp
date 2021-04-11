@@ -5,7 +5,7 @@ import './LoginForm.scss';
 import { useForm } from '../../hooks/useForm';
 import { validationSchema } from '../../utils/validationSchema';
 import Input from '../Input';
-import logo from '../../imgs/logo1.png';
+import logo from '../../img/logo1.png';
 import { logIn } from '../../firebase';
 import { InputPassword } from '../InputPassword/InputPassword';
 import AuthContext from '../../context/AuthContext';

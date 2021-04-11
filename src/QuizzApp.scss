@@ -349,3 +349,9 @@ template {
 [hidden] {
   display: none;
 }
+
+body {
+  width: 100%;
+  height: 100vh;
+  background: linear-gradient(to top right, #70c5d843, #70ccd8);
+}

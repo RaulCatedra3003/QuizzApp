@@ -30,11 +30,11 @@ export const SinginForm = () => {
 
   const handleSubmit = async e => {
     e.preventDefault();
-    setIsLoading(true);
     const { error } = isValid();
     if (error) {
       setErrorMessage(error.message);
     } else {
+      setIsLoading(true);
       const { user } = await singIn(email, password);
       fetch(`${constants.backendUrl}users/newUser`, {
         method: 'POST',

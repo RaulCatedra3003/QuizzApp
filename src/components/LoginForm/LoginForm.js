@@ -22,11 +22,11 @@ export const LoginForm = () => {
 
   const handleSubmit = async e => {
     e.preventDefault();
-    setIsLoading(true);
     const { error } = isValid();
     if (error) {
       setErrorMessage(error.message);
     } else {
+      setIsLoading(true);
       setErrorMessage(undefined);
       await logIn(email, password);
     }

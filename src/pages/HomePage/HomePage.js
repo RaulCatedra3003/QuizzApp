@@ -1,17 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
 import './HomePage.scss';
 
-import { logout } from '../../firebase';
+import { Header } from '../../components/Header/Header';
+import AuthContext from '../../context/AuthContext';
 
 export const HomePage = () => {
-  const handleLogout = async () => {
-    await logout();
-  };
+  const { currentUser } = useContext(AuthContext);
 
   return (
-    <div>
-      <button onClick={handleLogout}>logout</button>
+    <div className='home-page'>
+      {currentUser ? <Header /> : <p>No hay usuario</p>}
     </div>
   );
 };

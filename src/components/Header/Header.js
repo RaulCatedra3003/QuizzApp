@@ -19,7 +19,6 @@ export const Header = () => {
     <div className='header'>
       <img src={logo} alt='Quizz App Logo'></img>
       <div className='header__links'>
-        {}
         <Link
           to='/'
           className={

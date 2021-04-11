@@ -9,6 +9,7 @@ import constants from './utils/constants';
 
 function QuizzApp() {
   const [currentUser, setCurrentUser] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     const unsubscribeFromAuth = firebase.auth().onAuthStateChanged(user => {
@@ -24,10 +25,12 @@ function QuizzApp() {
             .then(response => response.json())
             .then(logedUser => {
               setCurrentUser({ user: logedUser.data, token: user.za });
+              setIsLoading(false);
             });
         }, 1000);
       } else {
         setCurrentUser(null);
+        setIsLoading(false);
       }
     });
 
@@ -39,7 +42,7 @@ function QuizzApp() {
   }, []);
 
   return (
-    <AuthContext.Provider value={{ currentUser }}>
+    <AuthContext.Provider value={{ currentUser, isLoading, setIsLoading }}>
       <AppRouter />
     </AuthContext.Provider>
   );

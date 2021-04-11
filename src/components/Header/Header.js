@@ -26,7 +26,7 @@ export const Header = () => {
               ? 'header__links__link selected'
               : 'header__links__link'
           }>
-          New game
+          New quizz
         </Link>
         <Link
           to='/scores'
